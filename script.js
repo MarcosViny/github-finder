@@ -3,14 +3,16 @@ const searchBtn = document.querySelector('.searchBtn')
 const ulElement = document.querySelector('.ulElement')
 const feedback = document.querySelector('.hidden')
 
-searchBtn.addEventListener('click', () => {
+searchBtn.onclick = ev => {
+    ev.preventDefault()
+
     feedback.classList.remove('hidden')
     useApi(userName.value)
     ulElement.innerHTML = ''
-})
+}
 
 function getName(response) {
-    for (let prop of response.data) {    
+    for(let prop of response.data) {
         const liElement = document.createElement('li')
         const a = document.createElement('a')
 
@@ -28,13 +30,14 @@ function useApi(user) {
     axios.get(`https://api.github.com/users/${user}/repos`)
         .then((response) => {
             getName(response)
+            if(!response.data.length) {
+                alert('Não possui repositórios públicos!')
+            }
         })
         .catch((error) => {
-            if(userName.value != ''){
-                alert('Usuário não encontrado!')
-            } else {
-                alert('Digite o nome do Usuário!')
-            }
+            if(error.response.status === 404) {
+                alert('Usuario Não Encontrado!')
+            } 
         })
         .then(() => {
             feedback.classList.add('hidden') 

@@ -12,17 +12,21 @@
     <header>
 
         <div id="navbar">
-            <h1>Github</h1>
-            <img id="logo" src="/images/logo.svg" alt="logo">
-            <h1>Finder</h1>
+            <div id="logo-container">
+                <h1>Github</h1>
+                <img id="logo" src="/images/logo.svg" alt="logo">
+                <h1>Finder</h1>
+            </div>
         </div>
 
         <div class="container">
             <h1>Encontre facilmente seus repositórios do Github!</h1>
 
             <div class="search-container">
-                <input type="text" name="user" id="user" placeholder="Digite o nome do usuário">
-                <button class="searchBtn">Pesquisar</button>
+                <form>
+                    <input type="text" name="user" id="user" class="user" placeholder="Digite o nome do usuário" autofocus>
+                    <button class="searchBtn">Pesquisar</button>
+                </form>
             </div>
 
             <ul class="ulElement">
