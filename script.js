@@ -5,10 +5,9 @@ const feedback = document.querySelector('.hidden')
 
 searchBtn.onclick = ev => {
     ev.preventDefault()
-
     feedback.classList.remove('hidden')
     useApi(userName.value)
-    ulElement.innerHTML = ''
+    ulElement.innerText = ""
 }
 
 function getName(response) {
@@ -31,15 +30,16 @@ function useApi(user) {
         .then((response) => {
             getName(response)
             if(!response.data.length) {
-                alert('Não possui repositórios públicos!')
+                alert('No momento este usuário não possui repositórios públicos!')
             }
         })
         .catch((error) => {
+            console.log(error)
             if(error.response.status === 404) {
                 alert('Usuario Não Encontrado!')
             } 
         })
         .then(() => {
-            feedback.classList.add('hidden') 
+            feedback.classList.add('hidden')
         })
 }

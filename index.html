@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Finder</title>
     <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
 </head>
 
 <body>
     <header>
-
         <div id="navbar">
             <div id="logo-container">
                 <h1>Github</h1>
@@ -20,17 +20,21 @@
         </div>
 
         <div class="container">
+
             <h1>Encontre facilmente seus repositórios do Github!</h1>
 
             <div class="search-container">
                 <form>
-                    <input type="text" name="user" id="user" class="user" placeholder="Digite o nome do usuário" autofocus>
+                    <input type="text" name="user" id="user" class="user" placeholder="Digite o nome do usuário"
+                        autofocus>
                     <button class="searchBtn">Pesquisar</button>
+                    <!-- Feedback loading li -->
+                    <h2 id="feedback" class="hidden">Carregando...</h2>
                 </form>
             </div>
 
             <ul class="ulElement">
-                <li id="feedback" class="hidden">Carregando...</li>
+                <!-- Each li will be added dynamically -->
             </ul>
         </div>
     </header>
@@ -39,5 +43,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
