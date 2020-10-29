@@ -1,46 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Github Finder</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-</head>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png" />
+  </head>
 
-<body>
+  <body>
     <header>
-        <div id="navbar">
-            <div id="logo-container">
-                <h1>Github</h1>
-                <img id="logo" src="/images/logo.svg" alt="logo">
-                <h1>Finder</h1>
-            </div>
+      <nav>
+        <div id="logo-container">
+          <h1>Github</h1>
+          <img id="logo" src="/images/logo.svg" alt="logo" />
+          <h1>Finder</h1>
         </div>
-
-        <div class="container">
-
-            <h1>Encontre facilmente seus repositórios do Github!</h1>
-
-            <div class="search-container">
-                <form>
-                    <input type="text" name="user" id="user" class="user" placeholder="Digite o nome do usuário"
-                        autofocus>
-                    <button class="searchBtn">Pesquisar</button>
-                    <!-- Feedback loading li -->
-                    <h2 id="feedback" class="hidden">Carregando...</h2>
-                </form>
-            </div>
-
-            <ul class="ulElement">
-                <!-- Each li will be added dynamically -->
-            </ul>
-        </div>
+      </nav>
     </header>
+
+    <main>
+      <div class="container">
+        <div class="search-container">
+
+            <div class="image-hero">
+                <img
+                  src="/images/octocat.png"
+                  id="hero"
+                  alt="hero-image"
+                />
+            </div>
+
+          <div class="search">
+            <h1>Encontre facilmente seus repositórios do Github!</h1>
+            <form>
+              <input
+                type="text"
+                id="user"
+                class="user"
+                placeholder="Digite o nome do usuário"
+                autofocus
+              />
+              <button class="searchBtn">Pesquisar</button>
+            </form>
+          </div>
+         
+        </div>
+      </div>
+
+      <h2 id="loading" class="hidden">Carregando...</h2>
+
+      <h1 class="without-repos">Repositórios</h1>
+      
+      <ul class="repositories">
+        <!-- Each li will be added dynamically -->
+      </ul>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
-
-</body>
+  </body>
 </html>

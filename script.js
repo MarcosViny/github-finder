@@ -1,45 +1,62 @@
-const userName = document.querySelector('input[name="user"]')
+const userName = document.querySelector('.user')
 const searchBtn = document.querySelector('.searchBtn')
-const ulElement = document.querySelector('.ulElement')
-const feedback = document.querySelector('.hidden')
+const repositories = document.querySelector('.repositories')
+const loading = document.querySelector('.hidden')
+const withoutRepos = document.querySelector('.without-repos')
+
+function hiddenElement(element, targetClass) {
+    element.classList.add(targetClass)
+}
+function showElement(element, targetClass) {
+    element.classList.remove(targetClass)
+}
 
 searchBtn.onclick = ev => {
     ev.preventDefault()
-    feedback.classList.remove('hidden')
-    useApi(userName.value)
-    ulElement.innerText = ""
+    
+    useApi(user.value)
+
+    repositories.innerText = ""
+    withoutRepos.removeAttribute('id', 'with-repos')
+    showElement(loading, 'hidden')
 }
 
 function getName(response) {
-    for(let prop of response.data) {
-        const liElement = document.createElement('li')
+   /*  for(let repo of response.data) {
+        const { name } = repo
+        console.log(name)
+    } */
+
+    for (let repo of response.data) {
+        const repository = document.createElement('li')
         const a = document.createElement('a')
 
-        a.setAttribute('href', `https://github.com/${userName.value}/${prop.name}`)
+        a.setAttribute('href', `${repo.html_url}`)
         a.setAttribute('target', "_blank")
-        a.innerText = `${prop.name}`
+        a.innerText = `${repo.name}`
 
-        liElement.appendChild(a)
-        
-        ulElement.appendChild(liElement)
+        repository.appendChild(a)
+
+        repositories.appendChild(repository)
     }
 }
 
-function useApi(user) {
-    axios.get(`https://api.github.com/users/${user}/repos`)
-        .then((response) => {
-            getName(response)
-            if(!response.data.length) {
-                alert('No momento este usuário não possui repositórios públicos!')
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-            if(error.response.status === 404) {
-                alert('Usuario Não Encontrado!')
-            } 
-        })
-        .then(() => {
-            feedback.classList.add('hidden')
-        })
+async function useApi(user) {
+    try {
+        let response = await axios.get(`https://api.github.com/users/${user}/repos`)
+
+        getName(response)
+
+        response.data.length ? 
+            withoutRepos.setAttribute('id', 'with-repos') 
+            : alert('No momento este usuário não possui repositórios públicos!')
+    }
+    
+    catch (error) {
+        if (error.response.status === 404) {
+            alert('Usuario Não Encontrado!')
+        }
+    }
+
+    hiddenElement(loading, 'hidden')
 }
