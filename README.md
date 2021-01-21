@@ -12,8 +12,8 @@ Design developed by me, and knowledge obtained during the first classes of the S
 
 ## Layout :desktop_computer:	
 ### Web Screenshot:
-![desktop](https://user-images.githubusercontent.com/58784661/90991120-3f116a00-e57d-11ea-95b7-071b45ab059a.png)
+![desktop](https://user-images.githubusercontent.com/58784661/105371221-23b99200-5be3-11eb-8454-f6aedee8cb3b.gif)
 
 
 ### Mobile Screenshot:
-![mobile](https://user-images.githubusercontent.com/58784661/90991132-55b7c100-e57d-11ea-85e0-fe76878a8686.png)
+![mobile](https://user-images.githubusercontent.com/58784661/105371245-287e4600-5be3-11eb-9bd0-d4fcbc1e3230.gif)
